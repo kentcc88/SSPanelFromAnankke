@@ -57,7 +57,7 @@ $app->add(new WhoopsMiddleware());
 // Home
 $app->post('/spay_back', App\Services\Payment::class . ':notify');
 $app->get('/spay_back', App\Services\Payment::class . ':notify');
-$app->get('/', App\Controllers\HomeController::class . ':indexold');
+$app->get('/', App\Controllers\HomeController::class . ':index');
 $app->get('/indexold', App\Controllers\HomeController::class . ':indexold');
 $app->get('/404', App\Controllers\HomeController::class . ':page404');
 $app->get('/405', App\Controllers\HomeController::class . ':page405');
@@ -326,6 +326,7 @@ $app->group('/mod_mu', function () {
     $this->post('/nodes/{id}/info', App\Controllers\Mod_Mu\NodeController::class . ':info');
 
     $this->get('/nodes', App\Controllers\Mod_Mu\NodeController::class . ':get_all_info');
+    $this->post('/nodes/config', App\Controllers\Mod_Mu\NodeController::class . ':getConfig');
 
     $this->get('/func/detect_rules', App\Controllers\Mod_Mu\FuncController::class . ':get_detect_logs');
     $this->get('/func/relay_rules', App\Controllers\Mod_Mu\FuncController::class . ':get_relay_rules');
